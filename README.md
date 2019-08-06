@@ -18,4 +18,4 @@ truffle migrate --reset
 npm run dev
 ```
 
-Then visit [localhost:3000](localhost:3000)
+Then visit [localhost:3000](http://www.localhost:3000)
