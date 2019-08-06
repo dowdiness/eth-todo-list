@@ -4,10 +4,11 @@
 
 ## How to run this App 
 Download [Ganache](https://www.trufflesuite.com/ganache).
+
 Activate [Metamask](https://metamask.io/) in your browser.
 
-Run Ganache
-Import Ganache's private network account in Metamask by Private Key.
+Run Ganache and import Ganache's private network account in Metamask by Private Key.
+
 Make sure you use same network between Ganache, Metamask and truffle-config.
 
 Run
@@ -17,4 +18,4 @@ truffle migrate --reset
 npm run dev
 ```
 
-Then visit localhost:3000
+Then visit [localhost:3000](localhost:3000)
