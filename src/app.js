@@ -47,7 +47,8 @@ App = {
     App.contracts.TodoList = TruffleContract(todoList)
     App.contracts.TodoList.setProvider(App.web3Provider)
     App.todoList = await App.contracts.TodoList.deployed()
-    console.log(App.todoList)
+    const tasks = await App.todoList.tasks(1)
+    console.log(tasks)
   },
   render: async () => {
     if (App.loading) {
@@ -75,10 +76,10 @@ App = {
 
       const $newTaskTemplate = $taskTemplate.clone()
       $newTaskTemplate.find('.content').html(taskContent)
-      $newTaskTemplate.find('.input')
+      $newTaskTemplate.find('input')
                       .prop('name', taskId)
                       .prop('checked', taskCompleted)
-                      // .on('click', App.toggleCompleted)
+                      .on('click', App.toggleCompleted)
 
       if (taskCompleted) {
         $('#completedTaskList').append($newTaskTemplate)
@@ -93,6 +94,13 @@ App = {
     App.setLoading(true)
     const content = $('#newTask').val()
     await App.todoList.createTask(content)
+    window.location.reload()
+  },
+  toggleCompleted: async (e) => {
+    App.setLoading(true)
+    const taskId = e.target.name
+    console.log(taskId)
+    await App.todoList.toggleCompleted(taskId)
     window.location.reload()
   },
   setLoading: (boolean) => {
